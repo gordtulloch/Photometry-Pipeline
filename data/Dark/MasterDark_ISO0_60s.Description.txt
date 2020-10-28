@@ -1,0 +1,41 @@
+Bitmap.BitPerChannels=16
+Bitmap.FileName=C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\MasterDark_ISO0_60s.tif[2020-06-23 10:04:56 AM]
+Bitmap.Height=2848
+Bitmap.NrChannels=1
+Bitmap.Width=4272
+Dark_Iteration=5
+Dark_Kappa=2.0000
+Dark_Method=2
+Fits.BayerPattern=4
+Fits.BlueScale=1.0000
+Fits.Brighness=1.0000
+Fits.DSLR=Generic RGGB
+Fits.FITSisRAW=1
+Fits.ForceUnsigned=0
+Fits.RedScale=1.0000
+----FileList----
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_001.fits[2020-06-23 7:05:19 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_002.fits[2020-06-23 7:06:28 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_003.fits[2020-06-23 7:07:36 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_004.fits[2020-06-23 7:08:43 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_005.fits[2020-06-23 7:09:52 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_006.fits[2020-06-23 7:11:00 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_007.fits[2020-06-23 7:12:08 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_008.fits[2020-06-23 7:13:16 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_009.fits[2020-06-23 7:14:23 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_010.fits[2020-06-23 7:15:31 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_011.fits[2020-06-23 7:16:39 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_012.fits[2020-06-23 7:17:47 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_013.fits[2020-06-23 7:18:55 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_014.fits[2020-06-23 7:20:03 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_015.fits[2020-06-23 7:21:11 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_016.fits[2020-06-23 7:22:18 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_017.fits[2020-06-23 7:23:26 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_018.fits[2020-06-23 7:24:34 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_019.fits[2020-06-23 7:25:42 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_020.fits[2020-06-23 7:26:50 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_021.fits[2020-06-23 7:27:58 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_022.fits[2020-06-23 7:29:06 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_023.fits[2020-06-23 7:30:14 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_024.fits[2020-06-23 7:31:21 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Dark\Dark_60_secs_025.fits[2020-06-23 7:32:29 AM]

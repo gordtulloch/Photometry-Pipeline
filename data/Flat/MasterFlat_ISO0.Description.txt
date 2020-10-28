@@ -1,0 +1,42 @@
+Bitmap.BitPerChannels=16
+Bitmap.FileName=C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\MasterFlat_ISO0.tif[2020-06-23 10:05:25 AM]
+Bitmap.Height=2848
+Bitmap.NrChannels=1
+Bitmap.Width=4272
+Fits.BayerPattern=4
+Fits.BlueScale=1.0000
+Fits.Brighness=1.0000
+Fits.DSLR=Generic RGGB
+Fits.FITSisRAW=1
+Fits.ForceUnsigned=0
+Fits.RedScale=1.0000
+Flat_Iteration=5
+Flat_Kappa=2.0000
+Flat_Method=2
+----FileList----
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_001.fits[2020-06-23 3:16:35 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_002.fits[2020-06-23 3:16:43 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_003.fits[2020-06-23 3:16:52 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_004.fits[2020-06-23 3:17:01 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_005.fits[2020-06-23 3:17:10 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_006.fits[2020-06-23 3:17:18 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_007.fits[2020-06-23 3:17:27 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_008.fits[2020-06-23 3:17:36 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_009.fits[2020-06-23 3:17:45 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_010.fits[2020-06-23 3:17:54 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_011.fits[2020-06-23 3:18:03 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_012.fits[2020-06-23 3:18:12 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_013.fits[2020-06-23 3:18:20 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_014.fits[2020-06-23 3:18:29 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_015.fits[2020-06-23 3:18:38 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_016.fits[2020-06-23 3:18:47 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_017.fits[2020-06-23 3:18:56 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_018.fits[2020-06-23 3:19:04 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_019.fits[2020-06-23 3:19:13 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_020.fits[2020-06-23 3:19:23 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_021.fits[2020-06-23 3:19:31 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_022.fits[2020-06-23 3:19:40 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_023.fits[2020-06-23 3:19:50 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_024.fits[2020-06-23 3:19:59 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\Arcturus_Flat_0.250_secs_025.fits[2020-06-23 3:20:07 AM]
+C:\Users\gord.tulloch\Dropbox\Astronomy\00 Telescope Data\SPAO\20200622\Flat\MasterFlat_ISO0.tif[2020-06-23 9:29:58 AM]
