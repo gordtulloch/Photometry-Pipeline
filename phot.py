@@ -4,30 +4,27 @@
 import requests, math, glob
 import pandas as pd
 import numpy as np
-from photutils import DAOStarFinder
+from photutils.detection import DAOStarFinder
+from photutils.aperture import aperture_photometry
+from photutils.aperture import CircularAperture
 from astropy.stats import mad_std
 from astropy.io import fits
 from astropy.coordinates import SkyCoord
 from astropy.wcs import WCS
 import astropy.units as u
-from photutils import aperture_photometry, CircularAperture
+import matplotlib.pyplot as plt
 from astroquery.simbad import Simbad
 from datetime import datetime
 import warnings
-import mariadb
-import sys
 warnings.filterwarnings('ignore')
-from pathlib import Path
 
 def get_comp_stars(ra,dec,filter_band='V',field_of_view=18.5):
     result = []
     vsp_template = 'https://www.aavso.org/apps/vsp/api/chart/?format=json&fov={}&maglimit=18.5&ra={}&dec={}'
-    if DEBUG == 1:
-        print(vsp_template.format(field_of_view, ra, dec))
+    print(vsp_template.format(field_of_view, ra, dec))
     r = requests.get(vsp_template.format(field_of_view, ra, dec))
     chart_id = r.json()['chartid']
-    if DEBUG == 1:
-        print('Downloaded Comparison Star Chart ID {}'.format(chart_id))
+    print('Downloaded Comparison Star Chart ID {}'.format(chart_id))
     for star in r.json()['photometry']:
         comparison = {}
         comparison['auid'] = star['auid']
@@ -40,6 +37,8 @@ def get_comp_stars(ra,dec,filter_band='V',field_of_view=18.5):
         result.append(comparison)
     return result, chart_id
 
+'''
+# Split RGB image into seperate channels
 def splitrgb(FITS_FILE):
     inputfile = FITS_FILE
     hdu_list = fits.open(inputfile)
@@ -64,16 +63,19 @@ def splitrgb(FITS_FILE):
     blue.writeto('tmp/blue.fits')
     hdu_list.close()
     return
+'''
 
-def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPARISON_STAR_MAG,FITS_FOLDER):
+def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPARISON_STAR_MAG):
+    
+    # Download comparison stars and search simbad for our target.
     astroquery_results = Simbad.query_object(STAR_NAME)
     TARGET_RA = str(astroquery_results[0]['RA'])
     TARGET_DEC = str(astroquery_results[0]['DEC']).replace('+','').replace('-','')
     results, chart_id = get_comp_stars(TARGET_RA, TARGET_DEC)
-    if DEBUG == 1:
-        print('{} comp stars found'.format(len(results)))
+    print('{} comp stars found'.format(len(results)))
     results.append({'auid': 'target', 'ra': TARGET_RA, 'dec': TARGET_DEC})
-
+    print(results)
+    
     # extract sources from image and add details to comp_stars
     fwhm = 3.0
     source_snr = 20
@@ -81,10 +83,13 @@ def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPA
     data = hdulist[0].data.astype(float)
     header = hdulist[0].header
     wcs = WCS(header)
-    bkg_sigma = mad_std(data)
-    daofind = DAOStarFinder(fwhm=fwhm, threshold=source_snr*bkg_sigma)
+    bkg_sigma = mad_std(data)    
+    daofind = DAOStarFinder(fwhm=fwhm, threshold=source_snr*bkg_sigma)    
     sources = daofind(data)
-
+    print("Sources found:")
+    print(sources)
+    
+    # Find the sources that correspond to our target and comparison stars
     for star in results:
         star_coord = SkyCoord(star['ra'],star['dec'], unit=(u.hourangle, u.deg))
         xy = SkyCoord.to_pixel(star_coord, wcs=wcs, origin=1)
@@ -96,14 +101,23 @@ def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPA
                 star['y'] = y
                 star['peak'] = source['peak']
     results = pd.DataFrame(results)
+    print("Sources corresponding to target and comp:")
+    print(results)
 
-    aperture_radius =6.0
-    positions = (results['x'], results['y'])
-    apertures = CircularAperture(positions, r=aperture_radius)
-    phot_table = aperture_photometry(data, apertures)
+    # Perform aperture photometry and add to the results
+    results = results.query('x > 0 and y > 0')
+    aperture_radius = 6.0
+    positions= np.column_stack((results['x'], results['y']))  
+    print("Positions to be passed:")
+    print(positions)
+    apertures = CircularAperture(positions, r=aperture_radius)    
+    phot_table = aperture_photometry(data, apertures)     
     results['aperture_sum'] = phot_table['aperture_sum']
     # add a col with calculation for instrumental mag
+    #   instrumental_mag is calculated as -2.5 * LOG10(`aperture_sum`)
     results['instrumental_mag'] = results.apply(lambda x: -2.5 * math.log10(x['aperture_sum']), axis = 1)
+    print("Sources with photometry and instrumental mag:")
+    print(results)
 
     # now perform ensemble photometry by linear regression of the comparison stars' instrumental mags
     to_linear_fit = results.query('auid != "target" and vmag > {} and vmag < {}'.format(BRIGHTEST_COMPARISON_STAR_MAG, DIMMEST_COMPARISON_STAR_MAG))
@@ -116,7 +130,7 @@ def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPA
     target_instrumental_magnitude = results[results.auid=='target']['instrumental_mag'].values[0]
     target_magnitude = fit_fn(target_instrumental_magnitude)
 
-    check_star_instrumental_magnitude = results[results.auid=='000-BJS-730']['instrumental_mag'].values[0]
+    check_star_instrumental_magnitude = results[results.auid=='000-BBH-921']['instrumental_mag'].values[0]
     check_magnitude = fit_fn(check_star_instrumental_magnitude)
 
     # Output results to file
@@ -134,7 +148,7 @@ def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPA
     text_file.close()
     return
 
-# **************************************
+'''# **************************************
 # * Connect to MariaDB Platform
 def connectDB():
     try:
@@ -151,26 +165,29 @@ def connectDB():
 
     # Get Cursor
     cur = conn.cursor()
-    return cur
+    return cur'''
     
 # *************************** MAINLINE *********************************
 
 # Set up database
-cur = connectDB()
+#cur = connectDB()
 
 # Other constants
 FITS_FOLDER = 'data/'
-STAR_NAME = 'AG DRA'
+FITS_FILE = '/home/gtulloch/Projects/Photometry-Pipeline/data/BGO/RWAUR-ID12496-OC145882-GR5353-I.fit'
+STAR_NAME = 'RW AUR'
 BRIGHTEST_COMPARISON_STAR_MAG = 8.0
 DIMMEST_COMPARISON_STAR_MAG = 13.0
 DEBUG = 1
 
-# Cycle through images and process
-pathlist = Path(FITS_FOLDER).glob('*.fit')
+process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPARISON_STAR_MAG)
+
+
+'''# Cycle through images and process
+pathlist = Path(FITS_FOLDER).glob('*.zip')
 for path in pathlist:
      path_in_str = str(path)
      print(path_in_str)
-     splitrgb(path_in_str)
      process_fits(path_in_str,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPARISON_STAR_MAG,FITS_FOLDER)
-
+     exit(0)'''
 

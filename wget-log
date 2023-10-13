@@ -1,11 +1,0 @@
---2020-07-22 14:20:06--  http://www.google.com/url?q=http%3A%2F%2Fds9.si.edu%2Fdownload%2Fubuntu18%2Fds9.ubuntu18.8.1.tar.gz
-Resolving www.google.com (www.google.com)... 216.239.38.120, 2607:f8b0:400a:800::2004
-Connecting to www.google.com (www.google.com)|216.239.38.120|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: unspecified [text/html]
-Saving to: ‘url?q=http:%2F%2Fds9.si.edu%2Fdownload%2Fubuntu18%2Fds9.ubuntu18.8.1.tar.gz’
-
-             url?q=http:%     [<=>                                   ]       0  --.-KB/s               url?q=http:%2F%2Fds9.si.e     [ <=>                                  ]   1.50K  --.-KB/s    in 0s      
-
-2020-07-22 14:20:06 (43.5 MB/s) - ‘url?q=http:%2F%2Fds9.si.edu%2Fdownload%2Fubuntu18%2Fds9.ubuntu18.8.1.tar.gz’ saved [1533]
-
