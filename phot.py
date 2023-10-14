@@ -37,34 +37,6 @@ def get_comp_stars(ra,dec,filter_band='V',field_of_view=18.5):
         result.append(comparison)
     return result, chart_id
 
-'''
-# Split RGB image into seperate channels
-def splitrgb(FITS_FILE):
-    inputfile = FITS_FILE
-    hdu_list = fits.open(inputfile)
-
-    image_data = hdu_list[0].data
-    indices=(0, 1, 2)
-    image_r = image_data[indices[0], :, :]
-    image_g = image_data[indices[1], :, :]
-    image_b = image_data[indices[2], :, :]
-
-    image_header = hdu_list[0].header
-    red = fits.PrimaryHDU(data=image_r)
-    red.header=hdu_list[0].header
-    red.header.set('COLORSPC', 'R       ', 'PCL: Color space')
-    red.writeto('tmp/red.fits')
-    green = fits.PrimaryHDU(data=image_g)
-    green.header=hdu_list[0].header
-    green.writeto('tmp/green.fits')
-    blue = fits.PrimaryHDU(data=image_b)
-    blue.header=hdu_list[0].header
-    blue.header.set('COLORSPC', 'B       ', 'PCL: Color space')
-    blue.writeto('tmp/blue.fits')
-    hdu_list.close()
-    return
-'''
-
 def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPARISON_STAR_MAG):
     
     # Download comparison stars and search simbad for our target.
@@ -76,7 +48,7 @@ def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPA
     results.append({'auid': 'target', 'ra': TARGET_RA, 'dec': TARGET_DEC})
     print(results)
     
-    # extract sources from image and add details to comp_stars
+    # extract sources from image and add details to comp_stars - these should be in a config file
     fwhm = 3.0
     source_snr = 20
     hdulist = fits.open(FITS_FILE)
@@ -130,6 +102,7 @@ def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPA
     target_instrumental_magnitude = results[results.auid=='target']['instrumental_mag'].values[0]
     target_magnitude = fit_fn(target_instrumental_magnitude)
 
+    # The check star should be in a database with details about the target
     check_star_instrumental_magnitude = results[results.auid=='000-BBH-921']['instrumental_mag'].values[0]
     check_magnitude = fit_fn(check_star_instrumental_magnitude)
 
@@ -147,39 +120,20 @@ def process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPA
     n = text_file.write('Ensemble of {}. Error as residuals of linear fit\n'.format(to_linear_fit['auid'].values))
     text_file.close()
     return
-
-'''# **************************************
-# * Connect to MariaDB Platform
-def connectDB():
-    try:
-        conn = mariadb.connect(
-        	user="phot",
-        	password="phot432ometry",
-        	host="localhost",
-        	port=3306,
-        	database="phot"
-    	)
-    except mariadb.Error as e:
-       print(f"Error connecting to MariaDB Platform: {e}")
-       sys.exit(1)
-
-    # Get Cursor
-    cur = conn.cursor()
-    return cur'''
-    
+  
 # *************************** MAINLINE *********************************
 
-# Set up database
-#cur = connectDB()
-
-# Other constants
+# Constants should go into a config file
 FITS_FOLDER = 'data/'
 FITS_FILE = '/home/gtulloch/Projects/Photometry-Pipeline/data/BGO/RWAUR-ID12496-OC145882-GR5353-I.fit'
+DEBUG = 1
+
+# These will be a database lookup based on target data in FITS file
 STAR_NAME = 'RW AUR'
 BRIGHTEST_COMPARISON_STAR_MAG = 8.0
 DIMMEST_COMPARISON_STAR_MAG = 13.0
-DEBUG = 1
 
+# Test main routine
 process_fits(FITS_FILE,STAR_NAME,BRIGHTEST_COMPARISON_STAR_MAG,DIMMEST_COMPARISON_STAR_MAG)
 
 
